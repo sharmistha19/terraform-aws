@@ -79,14 +79,14 @@ resource "aws_instance" "jenkins" {
       "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
       "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
       "sudo apt update -qq",
-      "sudo apt install -y openjdk-11-jdk",
-      "JAVA_HOME=/usr/lib/jvm/openjdk-11",
-      "PATH=$PATH:$JAVA_HOME/bin",
-      "export PATH",
       "sudo apt install software-properties-common -y",
       "sudo add-apt-repository ppa:deadsnakes/ppa -y",
       "sudo apt install -y python",
+      "sudo apt install -y openjdk-11-jdk",
       "sudo apt install jenkins -y",
+      "JAVA_HOME=/usr/lib/jvm/openjdk-11",
+      "PATH=$PATH:$JAVA_HOME/bin",
+      "export PATH",
       "sudo systemctl start jenkins",
     ]
   }

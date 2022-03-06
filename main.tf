@@ -72,7 +72,7 @@ resource "aws_instance" "jenkins" {
   ami             = data.aws_ami.ubuntu.id
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.web_traffic.name]
-  key_name        = "jenkins-key-pair"
+  key_name        = "jenkins_key_pair"
 
   provisioner "remote-exec" {
     inline = [
@@ -94,7 +94,7 @@ resource "aws_instance" "jenkins" {
     type        = "ssh"
     host        = self.public_ip
     user        = "ubuntu"
-    private_key = file("./jenkins-key-pair.pem")
+    private_key = file("./jenkins_key_pair.pem")
   }
   tags = {
     "Name"      = "Jenkins_Server"
